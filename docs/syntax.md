@@ -18,6 +18,10 @@
 
 `:>`
 
+### Argument Brackets
+
+`^^args^^`
+
 ### Arithmetic Operators
 
 **Addition:** `(+)`
@@ -48,10 +52,27 @@
 
 `D:`
 
+### Example:
+
+```
+:D ^^ int-chan i.greater^^ 21 ^^ ^^ <
+    yatta! "Is greater"~
+> o.O ^^ int-chan i.less^^ 21 ^^ ^^ <
+    yatta! "Is Less"~
+> D: <
+    yatta! "Error"~
+>
+```
+
 ### Loops
 
-**For Loop:** _TBA_  
-**While Loop:** _TBA_
+**For Loop:** `nande?`
+
+**For-Each Loop** `nandesuka?`
+
+**While Loop:** `nani?`
+
+**Do-While Loop** `nani-nani?`
 
 ### Loop Control
 
@@ -67,14 +88,38 @@
 
 **long**: `int-san`
 
-**boolean**: _TBA_
+**float**: `floaty`
 
-**character**: _TBA_
+**boolean**: `bool`
+
+**character**: `ch`
+
+**string**: _TBA_
+
+## True/False
+
+**True:** `hai`
+
+**False:** `iie`
+
+## Variable Declaration
+
+### Non mutable:
+
+```
+L int-chan: papaj :> 2137~
+```
+
+### Mutable:
+
+```
+V int-chan: papaj :> 2137~
+```
 
 ## Class Declaration
 
 ```
-class Papaj <
+C: Papaj <
     int value~
     char{20} name~
 >
@@ -83,19 +128,17 @@ class Papaj <
 ## Function Declaration
 
 ```
-func dup2137a ^^int-chan age, char{20} name^^ <
-    return age, name~
+F: dup2137a ^^int-chan age, char{20} name^^ <
+    yatta! age, name~
 >
 ```
 
 ## Print Statement
 
-_TBA_
+`kyaa!`
 
 ## Error Handling
 
 **try**: `ara!`
 
 **except**: `baka!`
-
-_Example:_
