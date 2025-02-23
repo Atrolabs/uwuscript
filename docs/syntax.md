@@ -1,144 +1,233 @@
-# Language Syntax
+# Language Syntax Specification
 
-## Operators
+## 1. Operators
 
-### End of Line Operator
+### 1.1 End of Line Operator
+- **Symbol:** `~`
+- **Description:** Marks the end of a statement.
+- **Example:**
+  ```
+  L int-chan: num :> 10~
+  kyaa! num~
+  ```
 
-`~`
+### 1.2 Code Block Operators
+- **Symbols:** `<` (Start), `>` (End)
+- **Description:** Defines the start and end of code blocks.
+- **Example:**
+  ```
+  nani? ^^bool condition^^ <
+      kyaa! "Condition met"~
+  >
+  ```
 
-### Code Block Operators
+### 1.3 Subscript Operator
+- **Symbol:** `{}`
+- **Description:** Used for array and buffer sizes.
+- **Example:**
+  ```
+  ch{20} name~
+  ```
 
-`<>`
+### 1.4 Assignment Operator
+- **Symbol:** `:>`
+- **Description:** Assigns values to variables.
+- **Example:**
+  ```
+  L int-chan: value :> 42~
+  ```
 
-### Subscript Operator
+### 1.5 Argument Brackets
+- **Symbol:** `^^args^^`
+- **Description:** Defines function parameters.
+- **Example:**
+  ```
+  F: greet ^^ch{20} name^^ <
+      kyaa! name~
+  >
+  ```
 
-`{}`
+### 1.6 Arithmetic Operators
+- **Addition:** `(+)`
+- **Subtraction:** `(-)`
+- **Multiplication:** `(*)`
+- **Division:** `(/)`
 
-### Assignment Operator
+### 1.7 Logical Operators
+- **AND:** `(&&)` or `(AND)`
+- **OR:** `(||)` or `(OR)`
 
-`:>`
+---
 
-### Argument Brackets
+## 2. Control Flow
 
-`^^args^^`
+### 2.1 Conditional Statements
 
-### Arithmetic Operators
+#### If Statement
+- **Syntax:** `:D`
+- **Example:**
+  ```
+  :D ^^ int-chan i.greater^^ 21 ^^ ^^ <
+      kyaa! "Is greater"~
+  >
+  ```
 
-**Addition:** `(+)`
+#### Else If Statement
+- **Syntax:** `o.O`
+- **Example:**
+  ```
+  o.O ^^ int-chan i.less^^ 21 ^^ ^^ <
+      kyaa! "Is Less"~
+  >
+  ```
 
-**Substraction:** `(-)`
+#### Else Statement
+- **Syntax:** `D:`
+- **Example:**
+  ```
+  D: <
+      kyaa! "Error"~
+  >
+  ```
 
-**Multiplication:** `(*)`
+### 2.2 Looping Constructs
 
-**Division:** `(/)`
+#### For Loop
+- **Syntax:** `nande?`
+- **Example:**
+  ```
+  nande? ^^int-chan i :> 0; i.less 10; i :> i (+) 1^^ <
+      kyaa! i~
+  >
+  ```
 
-### Logical Operators
+#### For-Each Loop
+- **Syntax:** `nandesuka?`
+- **Example:**
+  ```
+  nandesuka? ^^ch item in list^^ <
+      kyaa! item~
+  >
+  ```
 
-**AND:** `(&&)` or `(AND)`
+#### While Loop
+- **Syntax:** `nani?`
+- **Example:**
+  ```
+  nani? ^^bool condition^^ <
+      kyaa! "Looping..."~
+  >
+  ```
 
-**OR:** `(||)` or `(OR)`
+#### Do-While Loop
+- **Syntax:** `nani-nani?`
+- **Example:**
+  ```
+  nani-nani? <
+      kyaa! "Executed at least once"~
+  > ^^bool condition^^
+  ```
 
-## Control Flow
+### 2.3 Loop Control
+- **Continue:** `ganbatte!`
+- **Break:** `yamete!`
+- **Return:** `yatta!`
 
-### If Statement
+---
 
-`:D`
+## 3. Data Types
 
-### Else If Statement
+| Type | Keyword |
+|-------|----------|
+| Integer | `int` |
+| Short Integer | `int-chan` |
+| Long Integer | `int-san` |
+| Floating Point | `floaty` |
+| Boolean | `bool` |
+| Character | `ch` |
+| String | _TBA_ |
 
-`o.O`
+### 3.1 Boolean Values
+- **True:** `hai`
+- **False:** `iie`
 
-### Else Statement
+---
 
-`D:`
+## 4. Variable Declaration
 
-### Example:
+### 4.1 Non-Mutable Variable
+- **Syntax:** `L`
+- **Example:**
+  ```
+  L int-chan: papaj :> 2137~
+  ```
 
-```
-:D ^^ int-chan i.greater^^ 21 ^^ ^^ <
-    yatta! "Is greater"~
-> o.O ^^ int-chan i.less^^ 21 ^^ ^^ <
-    yatta! "Is Less"~
-> D: <
-    yatta! "Error"~
->
-```
+### 4.2 Mutable Variable
+- **Syntax:** `V`
+- **Example:**
+  ```
+  V int-chan: papaj :> 2137~
+  ```
 
-### Loops
+---
 
-**For Loop:** `nande?`
+## 5. Object-Oriented Features
 
-**For-Each Loop** `nandesuka?`
+### 5.1 Class Declaration
+- **Syntax:** `C:`
+- **Example:**
+  ```
+  C: Papaj <
+      int value~
+      ch{20} name~
+  >
+  ```
 
-**While Loop:** `nani?`
+---
 
-**Do-While Loop** `nani-nani?`
+## 6. Functions
 
-### Loop Control
+### 6.1 Function Declaration
+- **Syntax:** `F:`
+- **Example:**
+  ```
+  F: dup2137a ^^int-chan age, ch{20} name^^ <
+      yatta! age, name~
+  >
+  ```
 
-**Continue Statement:** `ganbatte!`  
-**Break Statement:** `yamete!`  
-**Return Statement:** `yatta!`
+---
 
-## Data Types
+## 7. Input/Output
 
-**integer**: `int`
+### 7.1 Print Statement
+- **Syntax:** `kyaa!`
+- **Example:**
+  ```
+  kyaa! "Hello, world!"~
+  ```
 
-**short**: `int-chan`
+---
 
-**long**: `int-san`
+## 8. Error Handling
 
-**float**: `floaty`
+### 8.1 Try-Catch Mechanism
 
-**boolean**: `bool`
+#### Try Block
+- **Syntax:** `ara!`
+- **Example:**
+  ```
+  ara! <
+      kyaa! "Trying something risky"~
+  >
+  ```
 
-**character**: `ch`
+#### Except Block
+- **Syntax:** `baka!`
+- **Example:**
+  ```
+  baka! <
+      kyaa! "An error occurred!"~
+  >
+  ```
 
-**string**: _TBA_
-
-## True/False
-
-**True:** `hai`
-
-**False:** `iie`
-
-## Variable Declaration
-
-### Non mutable:
-
-```
-L int-chan: papaj :> 2137~
-```
-
-### Mutable:
-
-```
-V int-chan: papaj :> 2137~
-```
-
-## Class Declaration
-
-```
-C: Papaj <
-    int value~
-    char{20} name~
->
-```
-
-## Function Declaration
-
-```
-F: dup2137a ^^int-chan age, char{20} name^^ <
-    yatta! age, name~
->
-```
-
-## Print Statement
-
-`kyaa!`
-
-## Error Handling
-
-**try**: `ara!`
-
-**except**: `baka!`
